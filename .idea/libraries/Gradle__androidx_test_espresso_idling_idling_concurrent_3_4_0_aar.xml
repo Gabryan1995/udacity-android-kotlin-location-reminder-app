@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.test.espresso.idling:idling-concurrent:3.4.0@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4f21e90e2b8ec88e721e899d0702e451/transformed/idling-concurrent-3.4.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4bfe2b858152470198190bc98fa48ec0/transformed/idling-concurrent-3.4.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4bfe2b858152470198190bc98fa48ec0/transformed/idling-concurrent-3.4.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/4bfe2b858152470198190bc98fa48ec0/transformed/idling-concurrent-3.4.0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.test.espresso.idling/idling-concurrent/3.4.0/d85346f0ad69763b42a7347a281627db5e432741/idling-concurrent-3.4.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.test.espresso.idling/idling-concurrent/3.4.0/44ab5b92a306e399764323c4923140aca6e69a8d/idling-concurrent-3.4.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
