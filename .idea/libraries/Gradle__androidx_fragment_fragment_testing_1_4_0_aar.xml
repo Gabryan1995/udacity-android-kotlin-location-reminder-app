@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.fragment:fragment-testing:1.4.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/2de4deda09db398a376ca3130e1dfa6e/transformed/jetified-fragment-testing-1.4.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2de4deda09db398a376ca3130e1dfa6e/transformed/jetified-fragment-testing-1.4.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2de4deda09db398a376ca3130e1dfa6e/transformed/jetified-fragment-testing-1.4.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a386402345478d3dc2ce314e7b44e02f/transformed/jetified-fragment-testing-1.4.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a386402345478d3dc2ce314e7b44e02f/transformed/jetified-fragment-testing-1.4.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a386402345478d3dc2ce314e7b44e02f/transformed/jetified-fragment-testing-1.4.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
