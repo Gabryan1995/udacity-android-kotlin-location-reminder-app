@@ -1,19 +1,28 @@
 package com.udacity.project4.locationreminders
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.udacity.project4.databinding.ActivityRemindersBinding
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.NavHostFragment
+import com.udacity.project4.R
+import com.udacity.project4.databinding.ActivityAuthenticationBinding
 
 /**
  * The RemindersActivity that holds the reminders fragments
  */
 class RemindersActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityAuthenticationBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityRemindersBinding.inflate(layoutInflater)
+        binding = ActivityAuthenticationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
