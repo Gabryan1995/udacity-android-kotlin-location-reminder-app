@@ -2,6 +2,7 @@
   <library name="Gradle: org.robolectric:resources:4.6">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/resources/4.6/578c4031c344ac40acf0a5ac8994b974cddfcd10/resources-4.6.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/resources/4.6/578c4031c344ac40acf0a5ac8994b974cddfcd10/resources-4.6.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/resources/4.6/5759116f1beb5585609cf46f70f4753632d5bbe5/resources-4.6-javadoc.jar!/" />

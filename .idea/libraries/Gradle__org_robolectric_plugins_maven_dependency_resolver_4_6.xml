@@ -2,6 +2,7 @@
   <library name="Gradle: org.robolectric:plugins-maven-dependency-resolver:4.6">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/plugins-maven-dependency-resolver/4.6/459c0ff5720089e6c0b660f2dda89f4b46109051/plugins-maven-dependency-resolver-4.6.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/plugins-maven-dependency-resolver/4.6/459c0ff5720089e6c0b660f2dda89f4b46109051/plugins-maven-dependency-resolver-4.6.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.robolectric/plugins-maven-dependency-resolver/4.6/b3cb83bdd9c981d2d2ae6beb65fbfadda4801342/plugins-maven-dependency-resolver-4.6-javadoc.jar!/" />

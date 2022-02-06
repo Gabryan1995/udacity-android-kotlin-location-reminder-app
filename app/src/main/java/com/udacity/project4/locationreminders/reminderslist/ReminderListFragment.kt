@@ -2,24 +2,27 @@ package com.udacity.project4.locationreminders.reminderslist
 
 import android.os.Bundle
 import android.view.*
-import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.firebase.ui.auth.AuthUI
 import com.udacity.project4.R
-import com.udacity.project4.authentication.LoginViewModel
 import com.udacity.project4.base.BaseFragment
 import com.udacity.project4.base.NavigationCommand
 import com.udacity.project4.databinding.FragmentRemindersBinding
 import com.udacity.project4.utils.setDisplayHomeAsUpEnabled
 import com.udacity.project4.utils.setTitle
-import com.udacity.project4.utils.setup
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.dsl.module
 
 class ReminderListFragment : BaseFragment() {
     //use Koin to retrieve the ViewModel instance
-    override val _viewModel by viewModels<RemindersListViewModel>()
+    val myModule = module {
+        //Declare a ViewModel - be later inject into Fragment with dedicated injector using by viewModel()
+        viewModel {
+            RemindersListViewModel(
+                get(),
+                get() as ReminderDataSource
+            )
+        }
     private lateinit var binding: FragmentRemindersBinding
 
     override fun onCreateView(
@@ -68,7 +71,7 @@ class ReminderListFragment : BaseFragment() {
         }
 
 //        setup the recycler view using the extension function
-        binding.reminderssRecyclerView.setup(adapter)
+        binding.remindersRecyclerView.setup(adapter)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

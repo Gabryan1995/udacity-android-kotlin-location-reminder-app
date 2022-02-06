@@ -6,6 +6,8 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/fab80ce4e4be610aabd2e865fd72b66d/transformed/idling-concurrent-3.4.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fab80ce4e4be610aabd2e865fd72b66d/transformed/idling-concurrent-3.4.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fab80ce4e4be610aabd2e865fd72b66d/transformed/idling-concurrent-3.4.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/fab80ce4e4be610aabd2e865fd72b66d/transformed/idling-concurrent-3.4.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fab80ce4e4be610aabd2e865fd72b66d/transformed/idling-concurrent-3.4.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.test.espresso.idling/idling-concurrent/3.4.0/d85346f0ad69763b42a7347a281627db5e432741/idling-concurrent-3.4.0-javadoc.jar!/" />
