@@ -28,6 +28,10 @@ import com.udacity.project4.locationreminders.RemindersActivity
 class AuthenticationActivity : AppCompatActivity() {
     private val viewModel by viewModels<LoginViewModel>()
 
+    private val signInLauncher = registerForActivityResult(FirebaseAuthUIActivityResultContract()) { result ->
+        this.onSignInResult(result)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityAuthenticationBinding.inflate(layoutInflater)
@@ -35,7 +39,9 @@ class AuthenticationActivity : AppCompatActivity() {
 //      TODO: Implement the create account and sign in using FirebaseUI, use sign in using email and sign in using Google
 
 //      TODO: If the user was authenticated, send him to RemindersActivity
-        binding.loginButton.setOnClickListener { launchSignInFlow() }
+        binding.loginButton.setOnClickListener {
+            launchSignInFlow()
+        }
 
 //        onBackPressedDispatcher.addCallback(this) {
 //            navController.popBackStack(R.id.mainFragment, false)
@@ -58,10 +64,6 @@ class AuthenticationActivity : AppCompatActivity() {
 
     }
 
-    private val signInLauncher = registerForActivityResult(FirebaseAuthUIActivityResultContract()) { result ->
-        this.onSignInResult(result)
-    }
-
     private fun launchSignInFlow() {
         val providers = arrayListOf(
             AuthUI.IdpConfig.EmailBuilder().build(),
@@ -70,6 +72,7 @@ class AuthenticationActivity : AppCompatActivity() {
 
         val signInIntent = AuthUI.getInstance()
             .createSignInIntentBuilder()
+            .setIsSmartLockEnabled(false)
             .setAvailableProviders(providers)
             .setLogo(R.drawable.map)
             .build()
