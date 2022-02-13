@@ -72,6 +72,7 @@ class AuthenticationActivity : AppCompatActivity() {
             .createSignInIntentBuilder()
             .setAvailableProviders(providers)
             .setLogo(R.drawable.map)
+            .setIsSmartLockEnabled(false)
             .build()
         signInLauncher.launch(signInIntent)
     }

@@ -83,10 +83,6 @@ dependencies {
 
     //Koin
     implementation "io.insert-koin:koin-android:3.1.5"
-    implementation "io.insert-koin:koin-core:3.1.5"
-    implementation "org.koin:koin-androidx-scope:3.1.5"
-    implementation "org.koin:koin-androidx-viewmodel:3.1.5"
-    implementation "org.koin:koin-androidx-fragment:3.1.5"
 
     // Dependencies for local unit tests
     testImplementation "junit:junit:4.13.2"
