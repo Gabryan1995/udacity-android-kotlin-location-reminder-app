@@ -2,8 +2,6 @@ package com.udacity.project4.locationreminders.reminderslist
 
 import android.os.Bundle
 import android.view.*
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.viewModels
 import com.firebase.ui.auth.AuthUI
 import com.udacity.project4.R
 import com.udacity.project4.base.BaseFragment
@@ -12,19 +10,18 @@ import com.udacity.project4.databinding.FragmentRemindersBinding
 import com.udacity.project4.utils.setDisplayHomeAsUpEnabled
 import com.udacity.project4.utils.setTitle
 import com.udacity.project4.utils.setup
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ReminderListFragment : BaseFragment() {
-    override val _viewModel by viewModels<RemindersListViewModel>()
+    override val _viewModel by viewModel<RemindersListViewModel>()
     private lateinit var binding: FragmentRemindersBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(
-                inflater,
-                R.layout.fragment_reminders, container, false
-            )
+        binding = FragmentRemindersBinding.inflate(layoutInflater)
+
         binding.viewModel = _viewModel
 
         setHasOptionsMenu(true)
