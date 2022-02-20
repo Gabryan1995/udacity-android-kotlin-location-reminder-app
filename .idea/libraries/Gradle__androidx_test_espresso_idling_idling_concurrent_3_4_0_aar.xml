@@ -3,11 +3,12 @@
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4f21e90e2b8ec88e721e899d0702e451/transformed/idling-concurrent-3.4.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4bfe2b858152470198190bc98fa48ec0/transformed/idling-concurrent-3.4.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/fab80ce4e4be610aabd2e865fd72b66d/transformed/idling-concurrent-3.4.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fab80ce4e4be610aabd2e865fd72b66d/transformed/idling-concurrent-3.4.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fab80ce4e4be610aabd2e865fd72b66d/transformed/idling-concurrent-3.4.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/fab80ce4e4be610aabd2e865fd72b66d/transformed/idling-concurrent-3.4.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/fab80ce4e4be610aabd2e865fd72b66d/transformed/idling-concurrent-3.4.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f7bd086f41c50e90e53421776c3aa88c/transformed/idling-concurrent-3.4.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ee04f7259242eadd2e6322e4eccb3c6a/transformed/idling-concurrent-3.4.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/325eaffa95746d96ae3da1d68d6a52c0/transformed/idling-concurrent-3.4.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ee04f7259242eadd2e6322e4eccb3c6a/transformed/idling-concurrent-3.4.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ee04f7259242eadd2e6322e4eccb3c6a/transformed/idling-concurrent-3.4.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.test.espresso.idling/idling-concurrent/3.4.0/d85346f0ad69763b42a7347a281627db5e432741/idling-concurrent-3.4.0-javadoc.jar!/" />
