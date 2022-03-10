@@ -23,7 +23,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.udacity.project4.R
 import com.udacity.project4.base.BaseFragment
+import com.udacity.project4.base.NavigationCommand
 import com.udacity.project4.databinding.FragmentSelectLocationBinding
+import com.udacity.project4.locationreminders.reminderslist.ReminderListFragmentDirections
 import com.udacity.project4.locationreminders.savereminder.SaveReminderViewModel
 import com.udacity.project4.utils.setDisplayHomeAsUpEnabled
 import org.koin.android.ext.android.inject
@@ -45,7 +47,7 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        binding = FragmentSelectLocationBinding.inflate(layoutInflater)
+        binding = FragmentSelectLocationBinding.inflate(inflater)
 
 
         binding.viewModel = _viewModel
@@ -65,6 +67,16 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
     }
 
     private fun onLocationSelected() {
+        binding.saveButton.setOnClickListener {
+            _viewModel.latitude.value = latitude
+            _viewModel.longitude.value = longitude
+            _viewModel.reminderSelectedLocationStr.value = name
+            _viewModel.navigationCommand.postValue(
+                NavigationCommand.To(
+                    SelectLocationFragmentDirections.actionSelectLocationFragmentToSaveReminderFragment()
+                )
+            )
+        }
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -183,7 +195,7 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
                 val currentLatLng = LatLng(latitude, longitude)
                 val markerOptions = MarkerOptions().position(currentLatLng)
                 map.addMarker(markerOptions)
-                map.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 10F))
+                map.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15F))
             }
         }
     }
