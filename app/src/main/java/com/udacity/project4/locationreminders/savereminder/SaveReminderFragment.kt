@@ -23,7 +23,6 @@ import com.udacity.project4.databinding.FragmentSaveReminderBinding
 import com.udacity.project4.locationreminders.geofence.GeofenceBroadcastReceiver
 import com.udacity.project4.locationreminders.reminderslist.ReminderDataItem
 import com.udacity.project4.utils.GeofenceConstants
-import com.udacity.project4.utils.GeofenceConstants.ACTION_GEOFENCE_EVENT
 import com.udacity.project4.utils.setDisplayHomeAsUpEnabled
 import org.koin.android.ext.android.inject
 
@@ -160,7 +159,7 @@ class SaveReminderFragment : BaseFragment() {
                 requireContext(),
                 0,
                 intent,
-                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+                PendingIntent.FLAG_MUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
             )
 
             geofencingClient.addGeofences(geofencingRequest, geofencePendingIntent)?.run {
