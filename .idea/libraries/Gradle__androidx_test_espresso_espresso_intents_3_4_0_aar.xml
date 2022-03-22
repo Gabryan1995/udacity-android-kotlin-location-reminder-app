@@ -7,8 +7,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/66641288316766a2fcebcd9f67ebe6a0/transformed/espresso-intents-3.4.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a554088155367e0f72cc02fa78c37951/transformed/espresso-intents-3.4.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f4ab8fd9ff073e91e1bff9528f206db3/transformed/espresso-intents-3.4.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a554088155367e0f72cc02fa78c37951/transformed/espresso-intents-3.4.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a554088155367e0f72cc02fa78c37951/transformed/espresso-intents-3.4.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ce3238b0ed87ba0dd37dbe9d71da613d/transformed/espresso-intents-3.4.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ce3238b0ed87ba0dd37dbe9d71da613d/transformed/espresso-intents-3.4.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ce3238b0ed87ba0dd37dbe9d71da613d/transformed/espresso-intents-3.4.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.test.espresso/espresso-intents/3.4.0/cd7b422071be6b67d450dd7579c4459ba0c3f58f/espresso-intents-3.4.0-javadoc.jar!/" />
