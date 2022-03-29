@@ -1,17 +1,7 @@
 package com.udacity.project4.locationreminders.reminderslist
 
-import android.Manifest
-import android.content.IntentSender
-import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.view.*
-import androidx.core.app.ActivityCompat
-import com.google.android.gms.common.api.ResolvableApiException
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.location.LocationSettingsRequest
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.udacity.project4.R
 import com.udacity.project4.base.BaseFragment
@@ -20,10 +10,10 @@ import com.udacity.project4.databinding.FragmentRemindersBinding
 import com.udacity.project4.utils.setDisplayHomeAsUpEnabled
 import com.udacity.project4.utils.setTitle
 import com.udacity.project4.utils.setup
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.android.ext.android.inject
 
 class ReminderListFragment : BaseFragment() {
-    override val _viewModel by viewModel<RemindersListViewModel>()
+    override val _viewModel: RemindersListViewModel by inject()
     private lateinit var binding: FragmentRemindersBinding
 
     override fun onCreateView(
