@@ -3,7 +3,6 @@ package com.udacity.project4.locationreminders.savereminder
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
@@ -33,15 +32,9 @@ class SaveReminderFragment : BaseFragment() {
     private lateinit var binding: FragmentSaveReminderBinding
     private lateinit var geofencingClient: GeofencingClient
     private lateinit var reminder: ReminderDataItem
-    private lateinit var contxt: Context
 
     private val runningQOrLater = android.os.Build.VERSION.SDK_INT >=
             android.os.Build.VERSION_CODES.Q
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        contxt = context
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,7 +46,7 @@ class SaveReminderFragment : BaseFragment() {
         setDisplayHomeAsUpEnabled(true)
 
         binding.viewModel = _viewModel
-        geofencingClient = LocationServices.getGeofencingClient(contxt)
+        geofencingClient = LocationServices.getGeofencingClient(requireContext())
 
         return binding.root
     }
@@ -68,7 +61,7 @@ class SaveReminderFragment : BaseFragment() {
         }
 
         binding.saveReminder.setOnClickListener {
-            geofencingClient = LocationServices.getGeofencingClient(contxt)
+            geofencingClient = LocationServices.getGeofencingClient(requireContext())
 
             val title = _viewModel.reminderTitle.value
             val description = _viewModel.reminderDescription.value
@@ -94,13 +87,13 @@ class SaveReminderFragment : BaseFragment() {
     private fun foregroundAndBackgroundLocationPermissionApproved(): Boolean {
         val foregroundLocationApproved = (
                 PackageManager.PERMISSION_GRANTED ==
-                        ActivityCompat.checkSelfPermission(contxt,
+                        ActivityCompat.checkSelfPermission(requireContext(),
                             Manifest.permission.ACCESS_FINE_LOCATION))
         val backgroundPermissionApproved =
             if (runningQOrLater) {
                 PackageManager.PERMISSION_GRANTED ==
                         ActivityCompat.checkSelfPermission(
-                            contxt, Manifest.permission.ACCESS_BACKGROUND_LOCATION
+                            requireContext(), Manifest.permission.ACCESS_BACKGROUND_LOCATION
                         )
             } else {
                 true
@@ -113,7 +106,7 @@ class SaveReminderFragment : BaseFragment() {
             priority = LocationRequest.PRIORITY_LOW_POWER
         }
         val builder = LocationSettingsRequest.Builder().addLocationRequest(locationRequest)
-        val settingsClient = LocationServices.getSettingsClient(contxt)
+        val settingsClient = LocationServices.getSettingsClient(requireContext())
         val locationSettingsResponseTask = settingsClient.checkLocationSettings(builder.build())
         locationSettingsResponseTask.addOnFailureListener { exception ->
             if (exception is ResolvableApiException && resolve){
@@ -161,11 +154,11 @@ class SaveReminderFragment : BaseFragment() {
                 .build()
 
 
-            val intent = Intent(contxt, GeofenceBroadcastReceiver::class.java)
+            val intent = Intent(requireContext(), GeofenceBroadcastReceiver::class.java)
             intent.action = GeofenceConstants.ACTION_GEOFENCE_EVENT
 
             val geofencePendingIntent = PendingIntent.getBroadcast(
-                contxt,
+                requireContext(),
                 0,
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE

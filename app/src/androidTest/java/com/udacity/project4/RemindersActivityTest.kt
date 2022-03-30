@@ -82,11 +82,11 @@ class RemindersActivityTest :
         }
     }
 
-@Before
-fun registerIdlingResources() {
-    IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
-    IdlingRegistry.getInstance().register(dataBindingIdlingResource)
-}
+    @Before
+    fun registerIdlingResources() {
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
+        IdlingRegistry.getInstance().register(dataBindingIdlingResource)
+    }
 
     @After
     fun unregisterIdlingResources() {
