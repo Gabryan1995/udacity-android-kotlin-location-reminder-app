@@ -25,9 +25,6 @@ class AuthenticationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         val binding = ActivityAuthenticationBinding.inflate(layoutInflater)
 
-//      TODO: Implement the create account and sign in using FirebaseUI, use sign in using email and sign in using Google
-
-//      TODO: If the user was authenticated, send him to RemindersActivity
         binding.loginButton.setOnClickListener { launchSignInFlow() }
 
 //        onBackPressedDispatcher.addCallback(this) {

@@ -23,6 +23,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.testing.FragmentScenario
 import androidx.test.core.app.ActivityScenario
 import androidx.test.espresso.IdlingResource
+import com.google.android.material.internal.ContextUtils.getActivity
 import java.util.UUID
 
 /**
@@ -81,7 +82,12 @@ class DataBindingIdlingResource : IdlingResource {
             fragments?.mapNotNull {
                 it.view?.getBinding()
             } ?: emptyList()
-        val childrenBindings = fragments?.flatMap { it.childFragmentManager.fragments }
+        val childrenBindings = fragments?.flatMap {
+            if (it.activity == null) {
+                return emptyList()
+            }
+            it.childFragmentManager.fragments
+        }
             ?.mapNotNull { it.view?.getBinding() } ?: emptyList()
 
         return bindings + childrenBindings
