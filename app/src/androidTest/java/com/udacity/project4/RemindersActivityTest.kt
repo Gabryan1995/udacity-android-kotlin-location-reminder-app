@@ -114,8 +114,6 @@ class RemindersActivityTest :
         onView(withText(R.string.reminder_saved))
             .inRoot(withDecorView(not(`is`(getActivity(activityScenario)?.window?.decorView))))
             .check(matches(isDisplayed()))
-
-        activityScenario.close()
     }
 
     @Test
@@ -134,8 +132,6 @@ class RemindersActivityTest :
         onView(withText(R.string.err_select_location))
             .inRoot(withDecorView(not(`is`(getActivity(activityScenario)?.window?.decorView))))
             .check(matches(isDisplayed()))
-
-        activityScenario.close()
     }
 
     private fun getActivity(activityScenario: ActivityScenario<RemindersActivity>): Activity? {
