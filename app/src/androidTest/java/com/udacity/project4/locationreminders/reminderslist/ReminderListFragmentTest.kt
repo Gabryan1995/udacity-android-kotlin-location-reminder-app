@@ -66,7 +66,6 @@ class ReminderListFragmentTest : AutoCloseKoinTest() {
 
             single {
                 SaveReminderViewModel(
-                    appContext,
                     get() as ReminderDataSource
                 )
             }

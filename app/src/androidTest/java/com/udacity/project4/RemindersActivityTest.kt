@@ -62,7 +62,6 @@ class RemindersActivityTest :
             }
             single {
                 SaveReminderViewModel(
-                    appContext,
                     get() as ReminderDataSource
                 )
             }
@@ -111,9 +110,14 @@ class RemindersActivityTest :
 
         onView(withId(R.id.saveReminder)).perform(click())
 
+        onView(withId(R.id.addReminderFAB)).perform(click())
+
         onView(withText(R.string.reminder_saved))
             .inRoot(withDecorView(not(`is`(getActivity(activityScenario)?.window?.decorView))))
             .check(matches(isDisplayed()))
+
+//        onView(withId(com.google.android.material.R.id.snackbar_text))
+//            .check(matches(withText(R.string.geofences_added)))
 
         activityScenario.close()
     }
@@ -130,9 +134,8 @@ class RemindersActivityTest :
 
         onView(withId(R.id.saveReminder)).perform(click())
 
-        onView(withText(R.string.err_select_location))
-            .inRoot(withDecorView(not(`is`(getActivity(activityScenario)?.window?.decorView))))
-            .check(matches(isDisplayed()))
+        onView(withId(com.google.android.material.R.id.snackbar_text))
+            .check(matches(withText(R.string.err_select_location)))
 
         activityScenario.close()
     }
