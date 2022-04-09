@@ -114,6 +114,8 @@ class RemindersActivityTest :
         onView(withText(R.string.reminder_saved))
             .inRoot(withDecorView(not(`is`(getActivity(activityScenario)?.window?.decorView))))
             .check(matches(isDisplayed()))
+
+        activityScenario.close()
     }
 
     @Test
@@ -125,13 +127,14 @@ class RemindersActivityTest :
         onView(withId(R.id.reminderTitle)).check(matches(isDisplayed()))
         onView(withId(R.id.reminderTitle)).perform(replaceText("New title"))
         onView(withId(R.id.reminderDescription)).perform(replaceText("New description"))
-        onView(withId(R.id.selectLocation)).perform(click())
 
-        onView(withId(R.id.save_button)).perform(click())
+        onView(withId(R.id.saveReminder)).perform(click())
 
         onView(withText(R.string.err_select_location))
             .inRoot(withDecorView(not(`is`(getActivity(activityScenario)?.window?.decorView))))
             .check(matches(isDisplayed()))
+
+        activityScenario.close()
     }
 
     private fun getActivity(activityScenario: ActivityScenario<RemindersActivity>): Activity? {
@@ -140,7 +143,6 @@ class RemindersActivityTest :
         activityScenario.onActivity {
             activity = it
         }
-        activityScenario.close()
 
         return activity
     }
