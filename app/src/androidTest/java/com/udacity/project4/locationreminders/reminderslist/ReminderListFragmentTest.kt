@@ -70,7 +70,7 @@ class ReminderListFragmentTest : AutoCloseKoinTest() {
                 )
             }
 
-            single { RemindersLocalRepository(get()) }
+            single { RemindersLocalRepository(get()) as ReminderDataSource }
 
             single {
                 Room.inMemoryDatabaseBuilder(

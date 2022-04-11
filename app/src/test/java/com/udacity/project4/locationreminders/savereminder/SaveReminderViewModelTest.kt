@@ -39,7 +39,7 @@ class SaveReminderViewModelTest {
     fun setupViewModel() {
         stopKoin()
         remindersViewModel =
-            SaveReminderViewModel(getApplicationContext(), FakeDataSource())
+            SaveReminderViewModel(FakeDataSource())
     }
 
     @Test
@@ -153,7 +153,10 @@ class SaveReminderViewModelTest {
 
         remindersViewModel.saveReminder(reminder)
 
-        assertThat(remindersViewModel.showLoading.getOrAwaitValue(), `is`(true))
+        assertThat(
+            remindersViewModel.showLoading.getOrAwaitValue(),
+            `is`(true)
+        )
     }
 
     @Test

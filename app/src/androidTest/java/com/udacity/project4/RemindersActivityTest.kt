@@ -112,12 +112,9 @@ class RemindersActivityTest :
 
         onView(withId(R.id.addReminderFAB)).perform(click())
 
-        onView(withText(R.string.reminder_saved))
-            .inRoot(withDecorView(not(`is`(getActivity(activityScenario)?.window?.decorView))))
-            .check(matches(isDisplayed()))
 
-//        onView(withId(com.google.android.material.R.id.snackbar_text))
-//            .check(matches(withText(R.string.geofences_added)))
+        onView(withId(com.google.android.material.R.id.snackbar_text))
+            .check(matches(withText(R.string.geofences_added)))
 
         activityScenario.close()
     }

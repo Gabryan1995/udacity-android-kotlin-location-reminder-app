@@ -1,7 +1,9 @@
 package com.udacity.project4.locationreminders.savereminder
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import androidx.test.core.app.ApplicationProvider
 import com.google.android.gms.maps.model.PointOfInterest
 import com.udacity.project4.R
 import com.udacity.project4.base.BaseViewModel
@@ -58,7 +60,7 @@ class SaveReminderViewModel(val dataSource: ReminderDataSource) :
                 )
             )
             showLoading.value = false
-            showToast.value = R.string.reminder_saved.toString()
+            showToast.value = ApplicationProvider.getApplicationContext<Context>().getString(R.string.reminder_saved)
             navigationCommand.value = NavigationCommand.BackTo(R.id.reminderListFragment)
         }
     }
