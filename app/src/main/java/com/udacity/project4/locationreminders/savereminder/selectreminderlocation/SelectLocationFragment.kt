@@ -56,37 +56,31 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
 
         setHasOptionsMenu(true)
         setDisplayHomeAsUpEnabled(true)
+        requestPermission()
 
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-        requestPermission()
-        onLocationSelected()
+
+        binding.onSaveButtonClicked = View.OnClickListener { onLocationSelected() }
 
         return binding.root
     }
 
     private fun onLocationSelected() {
-        binding.saveButton.setOnClickListener {
-            _viewModel.latitude.value = latitude
-            _viewModel.longitude.value = longitude
-            _viewModel.reminderSelectedLocationStr.value = name
-            _viewModel.navigationCommand.postValue(
-                NavigationCommand.To(
-                    SelectLocationFragmentDirections.actionSelectLocationFragmentToSaveReminderFragment()
-                )
-            )
-        }
+        _viewModel.latitude.value = latitude
+        _viewModel.longitude.value = longitude
+        _viewModel.reminderSelectedLocationStr.value = name
+        _viewModel.navigationCommand.value = NavigationCommand.Back
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         map.uiSettings.isZoomControlsEnabled = true
+        getCurrentLocation()
         setMapStyle(map)
         setPoiClick(map)
         setMapLongClick(map)
-        enableUserLocation()
-        onLocationSelected()
     }
 
     private fun setPoiClick(map: GoogleMap) {

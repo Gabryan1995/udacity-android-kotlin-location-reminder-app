@@ -39,7 +39,7 @@ class SaveReminderViewModelTest {
     fun setupViewModel() {
         stopKoin()
         remindersViewModel =
-            SaveReminderViewModel(FakeDataSource())
+            SaveReminderViewModel(getApplicationContext(), FakeDataSource())
     }
 
     @Test
@@ -70,7 +70,6 @@ class SaveReminderViewModelTest {
             remindersViewModel.reminderTitle.value,
             remindersViewModel.reminderDescription.value,
             remindersViewModel.reminderSelectedLocationStr.value,
-            remindersViewModel.selectedPOI.value,
             remindersViewModel.latitude.value,
             remindersViewModel.longitude.value
         )
@@ -153,10 +152,11 @@ class SaveReminderViewModelTest {
 
         remindersViewModel.saveReminder(reminder)
 
-        assertThat(
-            remindersViewModel.showLoading.getOrAwaitValue(),
-            `is`(true)
-        )
+        assertThat(remindersViewModel.showLoading.getOrAwaitValue(), `is`(true))
+
+        mainCoroutineRule.resumeDispatcher()
+
+        assertThat(remindersViewModel.showLoading.getOrAwaitValue(), `is`(false))
     }
 
     @Test
@@ -172,9 +172,6 @@ class SaveReminderViewModelTest {
 
         remindersViewModel.saveReminder(reminder)
 
-        assertThat(
-            remindersViewModel.showToast.getOrAwaitValue(),
-            `is`(getApplicationContext<Context>().getString(R.string.reminder_saved))
-        )
+        assertThat(remindersViewModel.showToast.getOrAwaitValue(), `is`(getApplicationContext<Context>().getString(R.string.reminder_saved)))
     }
 }
