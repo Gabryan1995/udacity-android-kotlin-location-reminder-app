@@ -57,7 +57,6 @@ class SaveReminderViewModel(application: Application, private val dataSource: Re
                 )
             )
             showLoading.value = false
-
             showToast.value = R.string.reminder_saved
             navigationCommand.value = NavigationCommand.Back
         }
