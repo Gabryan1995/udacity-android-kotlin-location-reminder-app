@@ -19,7 +19,7 @@ class ReminderListFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentRemindersBinding.inflate(layoutInflater)
 
         binding.viewModel = _viewModel
@@ -28,7 +28,10 @@ class ReminderListFragment : BaseFragment() {
         setDisplayHomeAsUpEnabled(false)
         setTitle(getString(R.string.app_name))
 
-        binding.refreshLayout.setOnRefreshListener { _viewModel.loadReminders() }
+        binding.refreshLayout.setOnRefreshListener {
+            _viewModel.loadReminders()
+            binding.refreshLayout.isRefreshing = false
+        }
 
         return binding.root
     }

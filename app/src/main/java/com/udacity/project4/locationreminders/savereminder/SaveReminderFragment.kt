@@ -42,7 +42,7 @@ class SaveReminderFragment : BaseFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_save_reminder, container, false)
 
@@ -56,7 +56,7 @@ class SaveReminderFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.selectLocation.setOnClickListener {
             //            Navigate to another fragment to get the user location
             _viewModel.navigationCommand.value =
