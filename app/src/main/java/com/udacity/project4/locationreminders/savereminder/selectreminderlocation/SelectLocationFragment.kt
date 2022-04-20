@@ -7,12 +7,14 @@ import android.content.ContentValues.TAG
 import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -31,7 +33,7 @@ import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 import java.util.*
 
 class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
-    private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
+    private lateinit var locationPermissionRequest: ActivityResultLauncher<Array<String>>
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     //Use Koin to get the view model of the SaveReminder
@@ -43,6 +45,7 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
     private var longitude: Double = 0.0
     private var name: String = ""
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?)
             : View {
         binding = FragmentSelectLocationBinding.inflate(inflater)
@@ -53,11 +56,12 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
 
         setHasOptionsMenu(true)
         setDisplayHomeAsUpEnabled(true)
-        requestPermission()
 
         val mapFragment = childFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        requestPermission()
 
         binding.onSaveButtonClicked = View.OnClickListener { onLocationSelected() }
 
@@ -71,11 +75,10 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
         _viewModel.navigationCommand.value = NavigationCommand.Back
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
         map.uiSettings.isZoomControlsEnabled = true
-        getCurrentLocation()
-
         setMapStyle(map)
 
         setPoiClick(map)
@@ -189,7 +192,6 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
                 val markerOptions = MarkerOptions().position(currentLatLng)
                 map.addMarker(markerOptions)
                 map.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15F))
-
             }
         }
     }
@@ -206,26 +208,37 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
                 Toast.makeText(context, "Location permission is granted.", Toast.LENGTH_LONG).show()
             }
             else -> {
-                requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
+                locationPermissionRequest.launch(arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION))
             }
 
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun requestPermission() {
-        requestPermissionLauncher =
-            registerForActivityResult(
-                ActivityResultContracts.RequestPermission()
-            ) { isGranted: Boolean ->
-                if (isGranted) {
-                    enableUserLocation()
-                } else {
+        locationPermissionRequest =
+            registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions())
+            { permissions ->
+                when {
+                    permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
+                        enableUserLocation()
+                    }
+                    permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
+                        enableUserLocation()
+                    } else -> {
                     Toast.makeText(
-                        context,
-                        "Location permission was not granted.",
-                        Toast.LENGTH_LONG
-                    ).show()
+                            context,
+                            "Location permission was not granted.",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
                 }
             }
+
+        locationPermissionRequest.launch(arrayOf(
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION))
     }
 }
